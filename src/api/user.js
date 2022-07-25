@@ -13,3 +13,12 @@ export const login = data => request({
   method: 'POST',
   data: data
 })
+
+/*
+  发送手机验证
+  @url mobile 手机号
+*/
+export const getSmsCode = mobile => request({
+  url: `/v1_0/sms/codes/${mobile}`,
+  method: 'GET'
+})
