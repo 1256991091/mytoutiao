@@ -1,7 +1,13 @@
 <template>
   <div class="login-container">
     <!--? 导航栏 -->
-    <van-nav-bar title="登录" />
+    <van-nav-bar class="page-nav" title="登录">
+      <template #left>
+        <!--? 为例模拟手机/pc的返回路由操作, $router.back() -->
+        <!--?  $router.back() 能够让路由退回到前一步-->
+        <van-icon name="cross" @click="$router.back()" />
+      </template>
+    </van-nav-bar>
 
     <!--? 登录表单 -->
     <van-form @submit="onSubmit" ref="loginForm">
@@ -118,6 +124,9 @@ export default {
         // 需要把返回的两个token放到vue状态管理器中
         // 通过this.$store.commit(mutations里定义的方法名,传递的参数) 方法A区调用mutations里定义的方法
         this.$store.commit('setUser', res.data.data)
+
+        // 通过$router.back()进行页面路由的退回
+        this.$router.back()
       } catch (err) {
         toast.clear()
         // 通过观察err返回的结果,可以发现 错误信息来源于err.response
@@ -174,6 +183,11 @@ export default {
     .login-btn {
       background-color: #6db4fb;
       border: none;
+    }
+  }
+  .page-nav {
+    .van-icon {
+      color: #fff;
     }
   }
 }

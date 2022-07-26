@@ -86,3 +86,6 @@ body {
 .van-nav-bar .van-nav-bar__title {
   color: #fff;
 }
+.mb-10 {
+  margin-bottom: 10px;
+}
