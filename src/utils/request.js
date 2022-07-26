@@ -9,4 +9,13 @@ import axios from 'axios'
 const request = axios.create({
   baseURL: 'http://toutiao.itheima.net'
 })
+
+// ? 请求拦截器 - 在该拦截器中可以统一处理前端发送的接口参数
+request.interceptors.request.use(config => {
+  /*
+    ? config: 本次请求的配装对象 (headers, data, params, url, method)
+  */
+  // ? 通过满足已登录的状态 (store里的user) 来判断来给满足条件的接口请求添加headers
+})
+
 export default request
