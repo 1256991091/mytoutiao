@@ -6,13 +6,19 @@
       <div class="base-info">
         <div class="left">
           <!-- 头像设置 -->
-          <van-image class="avatar" round fit="cover" :src="userInfo.photo" />
+          <van-image
+            class="avatar"
+            round
+            fit="cover"
+            :src="userInfo.photo"
+          />
           <!-- 用户昵称 -->
           <span class="name">{{ userInfo.name }}</span>
         </div>
         <div class="right">
           <!-- 编辑资料按钮 -->
-          <van-button round type="default" size="mini">编辑资料</van-button>
+          <!-- 使用声明式导航，将路由跳转到用户资料编辑页面 -->
+          <van-button round type="default" size="mini" to="/user">编辑资料</van-button>
         </div>
       </div>
       <!-- 个人数据 -->
@@ -41,6 +47,7 @@
         </van-grid>
       </div>
     </div>
+
     <!-- 顶部登录/祖册盒子 - 未登录 -->
     <div v-else class="header not-login">
       <!-- 跳转登录页面 -->
@@ -54,7 +61,7 @@
     <!--
       1. 一般属性里的值都为字符串
       2. 如果希望传递的是一个固定值，但它有不是字符串类型时，需要借用动态属性的v-bind:
-    -->
+     -->
     <van-grid class="grid-nav mb-10" :column-num="2">
       <van-grid-item text="收藏">
         <template #icon>
@@ -71,7 +78,7 @@
     <!-- 单元格导航 -->
     <van-cell title="消息通知" is-link />
     <van-cell title="小智同学" is-link class="mb-10" />
-    <van-cell v-if="user" title="退出登录" class="logout-cell" clickable @click="onLogout" />
+    <van-cell v-if="user" title="退出登录"  class="logout-cell" clickable @click="onLogout"/>
   </div>
 </template>
 
@@ -132,7 +139,6 @@ export default {
 <style lang="less" scoped>
 .my-container {
   padding-bottom: 100px;
-
   .header {
     min-height: 360px;
     background: url('../../assets/banner.png');
@@ -168,17 +174,16 @@ export default {
       border: unset;
     }
 
-    /deep/.van-grid-item__content::after {
+    ::v-deep .van-grid-item__content::after {
       border: unset;
     }
 
     /*
-      如果说，通过UI组件库设置的组件库自定义的类名样式不生效时，可以使用 /deep/ 来进行深度设置
+      如果说，通过UI组件库设置的组件库自定义的类名样式不生效时，可以使用 ::v-deep  来进行深度设置
     */
-    /deep/.van-grid-item__content {
+    ::v-deep .van-grid-item__content {
       background-color: unset;
       color: #fff;
-
       .van-grid-item__text {
         color: #fff;
       }
@@ -186,9 +191,9 @@ export default {
   }
 
   .not-login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
     .login-btn {
       display: flex;
@@ -223,7 +228,7 @@ export default {
       color: #ff9d1d;
     }
 
-    /deep/.van-grid-item__text {
+    ::v-deep .van-grid-item__text {
       font-size: 30px;
     }
   }

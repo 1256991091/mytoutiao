@@ -1,19 +1,26 @@
-// 全局样式文件
+// 全局样式
 
 // 加载图标样式图标
-
-
 @import './icon.less';
+
+// 发现。顶部导航是白字蓝底，那么，应该把这个css样式写在 1. 当前登录组件中， 2. 全局index.less css表中
+// 解释: 只要是项目，那么他就有统一的色调主题。这个主题色调就可能体现在 顶部导航，底部导航，选中的选项
+// 正因为如此，这些主题颜色的css样式，就可以写在全局样式表中
 body {
   background-color: #f5f7f9;
 }
+
+// 控制所有的头部导航
 .van-nav-bar {
   background-color: #3296fa;
   .van-nav-bar__title {
-    color: #fff;
+    color: #ffffff;
+  }
+  .van-icon {
+    color: #ffffff;
   }
 }
 
-.mb-10  {
+.mb-10 {
   margin-bottom: 10px;
 }

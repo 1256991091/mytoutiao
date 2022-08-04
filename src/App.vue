@@ -6,15 +6,18 @@
 
 <script>
 export default {
-  name: 'App',
-  data () {
-    return {
-
-    }
-  }
+  name: 'App'
 }
 </script>
 
-<style lang="less" scoped>
+<style scoped lang="less">
+h1 {
+  height: 200px;
+}
 
+.dd {
+  width: 694px;
+  height: 88px;
+  background-color: aquamarine;
+}
 </style>

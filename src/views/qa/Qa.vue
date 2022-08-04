@@ -1,12 +1,12 @@
 <template>
   <div>
-    Qa-vue
+    qa问答
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Qa-vue',
+  name: 'qaIndex',
   data () {
     return {
 

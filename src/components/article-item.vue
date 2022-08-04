@@ -1,46 +1,45 @@
 <template>
   <div class="article-item">
-    <van-cell>
-      <!--? 标题信息 -->
+    <!-- <van-cell :to="`/article/${ article.art_id }`"> -->
+    <van-cell :to="`/article/${ 7817 }`">
+      <!-- 标题信息 -->
       <template #title>
         <div class="title van-multi-ellipsis--l2">
-          {{article.title}}
+          {{ article.title }}
         </div>
       </template>
 
-      <!--? 底部信息 - 三个图片 -->
+      <!-- 底部信息 - 三个图片 -->
       <template #label>
-        <!--? 图片盒子 - 通过cover.type 来判断有几个图片 0 1 3 -->
+        <!-- 图片盒子 - 通过cover.type 来判断有几个图片 0 1 3 -->
         <div v-if="article.cover.type === 3" class="cover-wrap">
           <div
-          class="cover-item"
-          v-for="(img,index) in article.cover.images"
-          :key="index"
+            class="cover-item"
+            v-for="(img, index) in article.cover.images"
+            :key="index"
           >
             <van-image
-            class="right-image"
-            :src="img"
-            >
-            </van-image>
+              class="right-image"
+              :src="img"
+            ></van-image>
           </div>
         </div>
 
-        <!--? 作者信息 名称 评论数 时间 -->
+        <!-- 作者信息 名称 评论数 时间 -->
         <div class="label-info-wrap">
-          <span>{{article.aut_name}}</span>
-          <span>{{article.comm_count}}</span>
-          <span>{{article.pubdate}}</span>
+          <span>{{ article.aut_name }}</span>
+          <span>{{ article.comm_count }} 评论</span>
+          <span>{{ article.pubdate | relativeTime }}</span>
         </div>
       </template>
 
-      <!--? 通过 default 插槽来显示 单张图片的样式表现 -->
+      <!-- 通过 default 插槽来展示 单张图片的样式表现 -->
       <template #default v-if="article.cover.type === 1">
         <van-image
           class="right-image"
           fit="cover"
           :src="article.cover.images[0]"
-          >
-        </van-image>
+        ></van-image>
       </template>
     </van-cell>
   </div>
@@ -48,7 +47,7 @@
 
 <script>
 export default {
-  name: 'article-item',
+  name: 'ArticleItem',
   props: {
     article: {
       type: Object,
@@ -94,13 +93,13 @@ export default {
     margin-right: 20px;
   }
 
-  // 多图样式 - 通过flex布局来等分宽度. 同时使用:not(:last-child)来不影响最后一个图片
+  // 多图样式 - 通过flex布局来等分宽度， 同时使用:not(:last-child)来不影响最后一个图片
   .cover-wrap {
     display: flex;
     padding: 30px 0;
 
     .cover-item {
-      // 每张图片各占33% 均分
+      // 每张图片各占33%，均分
       flex: 1;
       height: 146px;
       &:not(:last-child) {

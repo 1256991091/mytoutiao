@@ -1,12 +1,12 @@
 <template>
   <div>
-    video
+    视频
   </div>
 </template>
 
 <script>
 export default {
-  name: 'video-vue',
+  name: 'videoIndex',
   data () {
     return {
 
